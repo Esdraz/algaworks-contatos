@@ -17,6 +17,11 @@ public class Contato {
         this.telefone = telefone;
     }
 
+    //checar se o registro e novo ou esta sendo editado
+    public boolean isNovo() {
+        return id == null;
+    }
+
     public String getId() {
         return id;
     }
