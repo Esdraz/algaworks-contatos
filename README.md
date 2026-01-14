@@ -14,9 +14,9 @@
 
 ### 🎯 Objetivo do Projeto
 
-Este projeto foi criado como um exercício prático para aplicar e consolidar conhecimentos em desenvolvimento web com Java e Spring Boot. O foco é demonstrar a construção de uma aplicação CRUD (Create, Read, Update, Delete) completa, desde o backend até o frontend.
+Este projeto foi criado como um exercício prático para aplicar e consolidar conhecimentos em desenvolvimento web com Java e Spring Boot.
 
-**Importante:** Esta é uma aplicação de demonstração e não deve ser utilizada em produção. Os dados são gerenciados em tempo de execução e **são perdidos a cada reinicialização da aplicação**, pois não há um banco de dados persistente configurado.
+**Importante:** Os dados são gerenciados em tempo de execução e **são perdidos a cada reinicialização da aplicação**, pois não há um banco de dados persistente configurado.
 
 ---
 
