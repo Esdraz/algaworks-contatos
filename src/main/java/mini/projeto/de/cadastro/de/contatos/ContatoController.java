@@ -10,12 +10,13 @@ import java.util.ArrayList;
 public class ContatoController {
 
     private static final ArrayList<Contato> LISTA_CONTATOS = new ArrayList<>();
+
     static {
-        LISTA_CONTATOS.add(new Contato("1", "Maria", "+55 34 99876-5432"));
-        LISTA_CONTATOS.add(new Contato("2", "João", "+55 34 91234-5678"));
-        LISTA_CONTATOS.add(new Contato("3", "Pedro", "+55 34 99999-8888"));
-        LISTA_CONTATOS.add(new Contato("4", "Ana", "+55 34 97777-6666"));
-        LISTA_CONTATOS.add(new Contato("5", "Carlos", "+55 34 95555-4444"));
+        LISTA_CONTATOS.add(new Contato("1", "Maria", "(34) 99876-5432"));
+        LISTA_CONTATOS.add(new Contato("2", "João", "(34) 91234-5678"));
+        LISTA_CONTATOS.add(new Contato("3", "Pedro", "(34) 99999-8888"));
+        LISTA_CONTATOS.add(new Contato("4", "Ana", "(34) 97777-6666"));
+        LISTA_CONTATOS.add(new Contato("5", "Carlos", "(34) 95555-4444"));
     }
 
     @GetMapping("/")
@@ -27,6 +28,13 @@ public class ContatoController {
     public ModelAndView listar() {
         ModelAndView modelAndView = new ModelAndView("listar");
         modelAndView.addObject("contatos", LISTA_CONTATOS);
+        return modelAndView;
+    }
+
+    @GetMapping("/contatos/novo")
+    public ModelAndView novo() {
+        ModelAndView modelAndView = new ModelAndView("formulario");
+        modelAndView.addObject("contato", new Contato());
         return modelAndView;
     }
 }
