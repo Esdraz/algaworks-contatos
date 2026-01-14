@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 
 @Controller
-public class ContatosController {
+public class ContatoController {
 
     private static final ArrayList<Contato> LISTA_CONTATOS = new ArrayList<>();
     static {
