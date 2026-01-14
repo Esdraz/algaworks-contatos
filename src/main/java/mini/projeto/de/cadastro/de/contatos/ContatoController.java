@@ -2,6 +2,7 @@ package mini.projeto.de.cadastro.de.contatos;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 
@@ -20,5 +21,12 @@ public class ContatoController {
     @GetMapping("/")
     public String index() {
         return "index";
+    }
+
+    @GetMapping("/contatos")
+    public ModelAndView listar() {
+        ModelAndView modelAndView = new ModelAndView("listar");
+        modelAndView.addObject("contatos", LISTA_CONTATOS);
+        return modelAndView;
     }
 }
