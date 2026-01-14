@@ -2,63 +2,81 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width"/>
-
-<title>AlgaWorks</title>
-
-<link rel="stylesheet" th:href="@{/css/estilo.css}" />
-
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<title>AlgaWorks Contatos</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a th:href="@{/}"> AlgaWorks Contatos </a></li>
-
-				<li><a th:href="@{/contatos}"> Listar </a></li>
-
-				<li><a th:href="@{/contatos/novo}"> Novo </a></li>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" th:href="@{/}">
+			<i class="fas fa-address-book"></i> AlgaWorks Contatos
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/contatos}">
+						<i class="fas fa-list"></i> Listar
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/contatos/novo}">
+						<i class="fas fa-plus"></i> Novo
+					</a>
+				</li>
 			</ul>
-		</nav>
+		</div>
+	</nav>
 
-	</header>
-	
-	<main>
-		<section>
-			<h1>Cadastro contatos</h1>
-		</section>
+	<main class="container mt-4">
+		<div class="card">
+			<div class="card-header">
+				<h1 class="card-title" th:if="${contato.novo}">
+					<i class="fas fa-user-plus"></i> Novo Contato
+				</h1>
+				<h1 class="card-title" th:if="${!contato.novo}">
+					<i class="fas fa-user-edit"></i> Editar Contato
+				</h1>
+			</div>
+			<div class="card-body">
+				<form th:action="${contato.novo} ? @{/contatos} : @{/contatos/{contato}(contato=${contato.id})}"
+					th:object="${contato}" th:method="${contato.novo} ? post : put">
 
-		<section>
-			<form th:action="${contato.novo} ? @{/contatos} : @{/contatos/{contato}(contato=${contato.id})}" 
-				th:object="${contato}" th:method="${contato.novo} ? post : put">
-				
-				<div th:if="${!contato.novo}">
-					<label>Código: </label> 
-					
-					<input th:field="*{id}" readonly="readonly" />
-				</div>
-				
-				<div>
-					<label>Nome: </label> 
-					
-					<input th:field="*{nome}" />
-				</div>
+					<div class="form-group" th:if="${!contato.novo}">
+						<label for="id">Código:</label>
+						<input class="form-control" th:field="*{id}" readonly="readonly" />
+					</div>
 
-				<div>
-					<label>Telefone: </label> 
-					
-					<input th:field="*{telefone}"/>
-				</div>
+					<div class="form-group">
+						<label for="nome">Nome:</label>
+						<input class="form-control" th:field="*{nome}" placeholder="Digite o nome do contato" />
+					</div>
 
-				<div>
-					<button>Salvar</button>
-				</div>
-			</form>
-		</section>
+					<div class="form-group">
+						<label for="telefone">Telefone:</label>
+						<input class="form-control" th:field="*{telefone}" data-mask="(00) 00000-0000" placeholder="Digite o telefone do contato"/>
+					</div>
+
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Salvar
+					</button>
+				</form>
+			</div>
+		</div>
 	</main>
-</body>
 
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.telefone').mask('(00) 00000-0000');
+		});
+	</script>
+</body>
 </html>

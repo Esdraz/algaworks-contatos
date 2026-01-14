@@ -2,34 +2,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width"/>
-
-<title>AlgaWorks</title>
-
-<link rel="stylesheet" th:href="@{/css/estilo.css}" />
-
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<title>AlgaWorks Contatos</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a th:href="@{/}"> AlgaWorks Contatos </a></li>
-
-				<li><a th:href="@{/contatos}"> Listar </a></li>
-
-				<li><a th:href="@{/contatos/novo}"> Novo </a></li>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" th:href="@{/}">
+			<i class="fas fa-address-book"></i> AlgaWorks Contatos
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/contatos}">
+						<i class="fas fa-list"></i> Listar
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/contatos/novo}">
+						<i class="fas fa-plus"></i> Novo
+					</a>
+				</li>
 			</ul>
-		</nav>
-	</header>
+		</div>
+	</nav>
 		
-	<main>
-		<section>
-			<h1>Seja bem vindo(a)!</h1>
-		</section>
+	<main class="container mt-4">
+		<div class="jumbotron">
+			<h1 class="display-4">
+				<i class="fas fa-address-card"></i> AlgaWorks Contatos!
+			</h1>
+			<p class="lead">Sistema Simples para Cadastro de Contatos</p>
+			<hr class="my-4">
+			<a class="btn btn-primary btn-lg" th:href="@{/contatos}" role="button">
+				<i class="fas fa-users"></i> Ver Contatos
+			</a>
+		</div>
 	</main>
-</body>
 
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
 </html>
