@@ -1,10 +1,7 @@
 package mini.projeto.de.cadastro.de.contatos;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -64,6 +61,17 @@ public class ContatoController {
         if (contatoExistente != null) {
             contatoExistente.setNome(contato.getNome());
             contatoExistente.setTelefone(contato.getTelefone());
+            return "redirect:/contatos";
+        } else {
+            return "redirect:/contatos";
+        }
+    }
+
+    @DeleteMapping("/contatos/{id}")
+    public String remover(@PathVariable String id) {
+        Contato contato = procurarContato(id);
+        if (contato != null) {
+            LISTA_CONTATOS.remove(contato);
             return "redirect:/contatos";
         } else {
             return "redirect:/contatos";
