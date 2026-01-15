@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -56,6 +57,20 @@ public class ContatoController {
         modelAndView.addObject("contato", contato);
         return modelAndView;
     }
+
+    @PutMapping("/contatos/{id}")
+    public String atualizar(@PathVariable String id, Contato contato) {
+        Contato contatoExistente = procurarContato(id);
+        if (contatoExistente != null) {
+            contatoExistente.setNome(contato.getNome());
+            contatoExistente.setTelefone(contato.getTelefone());
+            return "redirect:/contatos";
+        } else {
+            return "redirect:/contatos";
+        }
+    }
+
+    // -------------------- Metodos auxiliares -------------------------
 
     public Contato procurarContato(String id) {
         for (Contato contato : LISTA_CONTATOS) {
