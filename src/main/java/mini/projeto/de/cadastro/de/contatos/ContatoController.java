@@ -2,6 +2,7 @@ package mini.projeto.de.cadastro.de.contatos;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,5 +47,23 @@ public class ContatoController {
         contato.setId(id);
         LISTA_CONTATOS.add(contato);
         return "redirect:/contatos";
+    }
+
+    @GetMapping("/contatos/{id}/editar")
+    public ModelAndView editar(@PathVariable String id) {
+        ModelAndView modelAndView = new ModelAndView("formulario");
+        Contato contato = procurarContato(id);
+        modelAndView.addObject("contato", contato);
+        return modelAndView;
+    }
+
+    public Contato procurarContato(String id) {
+        for (Contato contato : LISTA_CONTATOS) {
+            if (contato.getId().equals(id)) {
+                return contato;
+            }
+
+        }
+        return null;
     }
 }
